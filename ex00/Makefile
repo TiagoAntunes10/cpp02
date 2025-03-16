@@ -1,11 +1,11 @@
 LIB = ./Include
 PRE = ./
 
-SOURCE = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SOURCE = main.cpp Fixed.cpp
 
 SOURCES = ${addprefix $(PRE), $(SOURCE)}
 
-NAME = zombies
+NAME = fixed
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

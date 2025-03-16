@@ -6,7 +6,7 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 22:36:29 by tialbert          #+#    #+#             */
-/*   Updated: 2025/03/15 15:04:26 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/03/16 17:07:33 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Fixed {
 		void	setRawBits( int const raw );
 
 	private:
-		int					nb;
-		static const int	frac_bits;
+		int					_nb;
+		static const int	_fracBits;
 };
 
 #endif
