@@ -6,7 +6,7 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 22:36:15 by tialbert          #+#    #+#             */
-/*   Updated: 2025/03/18 22:18:59 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:09:41 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,25 @@
 const int Fixed::_fracBits = 8;
 
 Fixed::Fixed( void ) {
-	std::cout << "Default constructor called" << std::endl;
 	setRawBits(0);
 }
 
 Fixed::Fixed( int const value ) {
-	std::cout << "Int constructor called" << std::endl;
 	setRawBits(value * pow(2, _fracBits));
 }
 
 Fixed::Fixed( float const value ) {
-	std::cout << "Float constructor called" << std::endl;
 	setRawBits(roundf(value * pow(2, _fracBits)));
 }
 
 Fixed::~Fixed( void ) {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed( const Fixed &fixed ) {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = fixed;
 }
 
 Fixed	&Fixed::operator= ( const Fixed &fixed ) {
-	std::cout << "Copy assignment operator called" << std::endl;
 	setRawBits(fixed.getRawBits());
 	return (*this);
 }
@@ -157,7 +151,6 @@ const Fixed	&Fixed::max( const Fixed &fixed1, const Fixed &fixed2 ) {
 }
 
 int		Fixed::getRawBits( void ) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (_nb);
 }
 

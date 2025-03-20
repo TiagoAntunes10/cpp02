@@ -6,7 +6,7 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:25:04 by tialbert          #+#    #+#             */
-/*   Updated: 2025/03/19 21:43:00 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:10:08 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ Point::Point( void ) {
 
 	_x = x;
 	_y = y;
-	std::cout << "Point void constructor called" << std::endl;
 }
 
 Point::Point( const float x, const float y ) {
@@ -27,20 +26,16 @@ Point::Point( const float x, const float y ) {
 
 	_x = fixed_x;
 	_y = fixed_y;
-	std::cout << "Point float constructor called" << std::endl;
 }
 
 Point::~Point( void ) {
-	std::cout << "Point destructor called" << std::endl;
 }
 
 Point::Point( const Point &point ) {
-	std::cout << "Point copy constructor called" << std::endl;
 	*this = point;
 }
 
 Point	&Point::operator= ( const Point &point ) {
-	std::cout << "Point copy assignment operator called" << std::endl;
 	setX(point.getX());
 	setY(point.getY());
 

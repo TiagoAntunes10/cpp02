@@ -6,54 +6,67 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:26:05 by tialbert          #+#    #+#             */
-/*   Updated: 2025/03/19 22:17:17 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:09:04 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Include/include.hpp"
 
-static Fixed	*calc_area( Point const a, Point const b, Point const c ) {
-	Fixed	result((a.getX()*(b.getY() - c.getY()) + b.getX()*(c.getY() - a.getY()) + c.getX() * (a.getY() - b.getY())) / 2);
-	Fixed	*area;
+static Fixed	*calc_w1( Point const a, Point const b, Point const c, Point const point ) {
+	Fixed	*w1;
+	Fixed	num(a.getX() * (c.getY() - a.getY()) + (point.getY() - a.getY()) * (c.getX() - a.getX()) - point.getX() * (c.getY() - a.getY()));
+	Fixed	den((b.getY() - a.getY()) * (c.getX() - a.getX()) - (b.getX() - a.getX()) * (c.getY() - a.getY()));
 
-	area = new (std::nothrow) Fixed(result);
+	if (den == (Fixed) 0) {
+		std::cout << "Division by 0" << std::endl;
+		return (NULL);
+	}
+	w1 = new (std::nothrow) Fixed(num / den);
+	if (w1 == NULL)
+		return (NULL);
 
-	return (area);
+	return (w1);
 }
 
-static Fixed	*calc_point_area( Point const a, Point const b, Point const c, Point const point ) {
-	Fixed	*point_area1;
-	Fixed	*point_area2;
-	Fixed	*point_area3;
-	Fixed	*total;
+static Fixed	*calc_w2( Point const a, Point const b, Point const c, Point const point, Fixed w1 ) {
+	Fixed	*w2;
+	Fixed	num(point.getY() - a.getY() - w1 * (b.getY() - a.getY()));
+	Fixed	den(c.getY() - a.getY());
 
-	point_area1 = calc_area(a, b, point);
-	point_area2 = calc_area(a, c, point);
-	point_area3 = calc_area(b, c, point);
+	if (den == (Fixed) 0) {
+		std::cout << "Division by 0" << std::endl;
+		return (NULL);
+	}
+	w2 = new (std::nothrow) Fixed(num / den);
+	if (w2 == NULL)
+		return (NULL);
 
-	const Fixed	result(*point_area1 + *point_area2 + *point_area3);
-
-	delete point_area1;
-	delete point_area2;
-	delete point_area3;
-
-	total = new (std::nothrow) Fixed(result);
-	return (total);
+	return (w2);
 }
 
 bool	bsp( Point const a, Point const b, Point const c, Point const point) {
-	Fixed	*tri_area;
-	Fixed	*total_area;
+	Fixed	*w1;
+	Fixed	*w2;
 
-	tri_area = calc_area(a, b, c);
-	total_area = calc_point_area(a, b, c, point);
+	w1 = calc_w1(a, b, c, point);
+	if (w1 == NULL) {
+		std::cout << "Memory allocation error" << std::endl;
+		exit(1);
+	}
 
-	if (tri_area == total_area) {
-		delete total_area;
-		delete tri_area;
+	w2 = calc_w2(a, b, c, point, *w1);
+	if (w2 == NULL) {
+		delete w1;
+		std::cout << "Memory allocation error" << std::endl;
+		exit(1);
+	}
+
+	if (*w1 >= (Fixed) 0 && *w2 >= (Fixed) 0 && (*w1 + *w2) <= (Fixed) 1) {
+		delete w1;
+		delete w2;
 		return (true);
 	}
-	delete total_area;
-	delete tri_area;
+	delete w1;
+	delete w2;
 	return (false);
 }
