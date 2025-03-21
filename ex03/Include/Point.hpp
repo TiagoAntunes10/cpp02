@@ -6,7 +6,7 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:17:41 by tialbert          #+#    #+#             */
-/*   Updated: 2025/03/19 21:39:52 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/03/21 21:50:12 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Point {
 		~Point( void );
 		Point( const Point &point );
 		Point	&operator= ( const Point &point );
+		bool	operator== ( const Point &point );
 		void	setX( Fixed const &fixed );
 		void	setY( Fixed const &fixed );
 		Fixed	getX( void ) const;

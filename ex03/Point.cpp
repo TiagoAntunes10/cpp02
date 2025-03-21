@@ -6,7 +6,7 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:25:04 by tialbert          #+#    #+#             */
-/*   Updated: 2025/03/20 22:10:08 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/03/21 21:51:30 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ Point	&Point::operator= ( const Point &point ) {
 	setY(point.getY());
 
 	return (*this);
+}
+
+bool	Point::operator== ( const Point &point ) {
+	if (this->getX() == point.getX() && this->getY() == point.getY())
+		return (true);
+	return (false);
 }
 
 void	Point::setX( Fixed const &fixed ) {
