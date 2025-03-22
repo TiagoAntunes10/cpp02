@@ -6,7 +6,7 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 22:36:15 by tialbert          #+#    #+#             */
-/*   Updated: 2025/03/21 23:28:04 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:24:42 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,26 +105,26 @@ Fixed	Fixed::operator/ ( const Fixed &fixed ) {
 }
 
 Fixed	&Fixed::operator-- ( void ) {
-	_nb--;
+	--_nb;
 	return (*this);
 }
 
 Fixed	&Fixed::operator++ ( void ) {
-	_nb++;
+	++_nb;
 	return (*this);
 }
 
 Fixed	Fixed::operator-- ( int ) {
 	Fixed	temp = *this;
 
-	--_nb;
+	_nb--;
 	return (temp);
 }
 
 Fixed	Fixed::operator++ ( int ) {
 	Fixed	temp = *this;
 
-	++_nb;
+	_nb++;
 	return (temp);
 }
 
