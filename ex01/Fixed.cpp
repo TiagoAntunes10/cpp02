@@ -6,7 +6,7 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 22:36:15 by tialbert          #+#    #+#             */
-/*   Updated: 2025/03/16 21:16:26 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:13:53 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ Fixed	&Fixed::operator= ( const Fixed &fixed ) {
 }
 
 int		Fixed::getRawBits( void ) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (_nb);
 }
 
